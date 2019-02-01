@@ -1,0 +1,50 @@
+
+<ion-card class="card-question" [class.study-card]="quiz_type=='study'">  
+  <ion-card-content [class.text-question]="card.c_text">
+    <div class="question-content">
+      <div *ngIf="card.c_audio">
+        <ion-icon name="volume-high" class="audio-large" [class.audio-large-active]="audioActive" (click)="playAudio()"></ion-icon>
+      </div>
+      <div [class.smalltext]="card.smalltext" class="card-text">
+        <span>{{ card.c_text }}</span>
+        <br />
+        {{ card.c_subtext }}
+      </div>
+    </div>
+    <div *ngIf="quiz_type=='study'" class="study-answer">
+      {{ card.c_study }}
+      <br />
+      <span>{{ card.c_substudy }}</span>
+    </div>
+  </ion-card-content>
+</ion-card>
+
+<ng-container *ngIf="quiz_type=='quiz'; else studyaction">
+<ion-card 
+  *ngFor="let a of card.c_viewalist; index as i"
+  (click)="selectAnswer(i, $event)" 
+  [class.answer-active]="!madeChoice" 
+  class="card-answer">
+  <ion-card-content>
+      <ion-radio></ion-radio> {{ a }}
+  </ion-card-content>
+</ion-card>
+</ng-container>
+<ng-template #studyaction>
+  <ion-card class="studycard">
+      <ion-row>
+          <ion-col size="6">
+            <ion-item (click)="prevCard()" *ngIf="cardCount!=0" lines="none">
+                <ion-icon name="arrow-back"></ion-icon>
+                Prev
+            </ion-item>            
+          </ion-col>
+          <ion-col size="6">
+              <ion-item (click)="nextCard()" lines="none" style="float:right;">
+                Next
+                <ion-icon name="arrow-forward"></ion-icon>
+                </ion-item>
+            </ion-col>
+      </ion-row>
+  </ion-card>
+</ng-template>

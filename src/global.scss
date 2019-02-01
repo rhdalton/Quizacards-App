@@ -9,3 +9,221 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+@font-face {
+  font-family: fangzheng;
+  src: url('assets/fonts/fangzhenghei.ttf') format("truetype");
+}
+
+$default-color: #333333;
+$light-color: #777777;
+$study-color:#269b63;
+$study-color-light: lighten( $study-color, 50%);
+$quiz-color:#126bf0;
+$quiz-color-light: lighten( $quiz-color, 40%);
+$light-blue: #b5d0f9;
+$bg-blue: #c1e6ff;
+$correct-color: #adffba;
+$incorrect-color: #ffcdcd;
+$default-size: 16px;
+
+.study-color { color: $study-color }
+.study-icon { width:60px; }
+.quiz-color { color: $quiz-color; }
+.quiz-icon { width:60px; }
+.cn { &.lg { font-size:30px; } font-family:fangzheng; }
+.sm { font-size:13px; color:$light-color; line-height:1.4; }
+
+:root {--ion-background-color: #d4e5ff;}
+.sc-ion-card-md-h, 
+.navigation-tab,
+app-home, 
+app-profile,
+app-settings, 
+app-about {
+  --ion-background-color:#fff;
+  background-color:#fff;
+}
+ion-toolbar {
+  --ion-background-color:#265eb3;
+  color:#fff;
+}
+ion-card-content {
+  color: $default-color;
+}
+.card-content {
+  font-size: $default-size
+}
+ion-text {
+  margin:12px 10px 12px 0;
+  line-height:1.5;
+}
+.study-color,
+.quiz-color {
+  img {
+    width:18px;
+    display:inline;
+    vertical-align: text-bottom;
+  }
+}
+
+ion-item-divider {
+  min-height:50px;
+  color:$default-color;
+
+  &.quiz-legend {
+      font-size:12px;
+      font-weight:bold;
+      min-height:30px;
+      text-align:right;
+
+      img {
+        margin-right:4px;
+        padding:0;
+        width:16px;
+      }
+      * {
+          vertical-align: middle;
+          margin-right:5px;
+      }
+  }
+  &.quiz-list {
+    font-size:$default-size;
+
+    .study-icon,
+    .quiz-icon {
+      padding: 5px 12px 0px 8px;
+    }
+    .quiz-button {
+      display:inline-block;
+      padding:25px 30px;
+      background:$quiz-color-light url('assets/icon/quiz-svg.svg') center no-repeat;
+      background-size: 30px;
+    }
+    .study-button {
+      display:inline-block;
+      padding:25px 30px;
+      background:$study-color-light url('assets/icon/study-svg.svg') center no-repeat;
+      background-size: 29px;
+    }
+    
+    div[slot=end] {
+      font-size:0;
+    }
+  }
+  &.item .category-header {
+    font-weight:700;
+    font-size:18px;
+  }
+  div {
+    margin:0;
+    ion-icon {
+      padding:5px 18px 5px 7px;
+    }
+  }
+}
+
+.quizcard-info.card-content-md {
+  font-size:13px;
+  font-weight:700;
+  padding:5px 15px;
+  color: $default-color;
+}
+.quizcard-info-right {
+  float:right;
+}
+
+.quizcard-header,
+.card-question,
+.studycard {
+  border:1px solid $light-blue;
+}
+
+.question-content {
+  height:160px;
+  padding-bottom:15px;
+  font-size:16px;
+  font-weight:500;
+  color:$default-color;
+  white-space: pre-line;
+  .card-text span {
+    font-size:30px;
+    font-family:fangzheng;
+  }
+  .card-text.smalltext {
+    font-size:15px;
+    span {
+      font-size:24px;
+    }
+  }
+}
+
+.card-answer {
+  border:1px solid $light-blue;
+  
+  ion-card-content {
+    font-size:16px;
+    color:$default-color;
+    
+    ion-radio {
+      margin-right:5px;
+    }
+  }
+}
+
+.study-card {
+  .study-answer {
+      height:140px;
+      white-space: pre-line;
+      color:$default-color;
+      font-size:20px;
+      font-weight:500;
+      padding-top:15px;
+      border-top:1px solid $light-blue;
+      span {
+        margin-top:5px;
+          font-size:14px;
+          color:#777;
+          line-height:1.4;
+          display:inline-block;
+          font-weight:400;
+      }
+  }
+}
+.quiz-results .card-content {
+  font-size:16px;
+  color:$default-color;
+}
+.qresult-item {
+  font-size:16px;
+  img {
+    width:24px;
+    margin-right:5px;
+  }
+}
+
+.about-page {
+  ion-label {
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:5px;
+  }
+}
+
+.audio-large {
+  font-size:50px;
+  color:#999;
+}
+.audio-large-active {
+  color:#007bff;
+}
+
+.answer-active {
+  cursor: pointer;
+}
+.correct-answer {
+  background: $correct-color;
+}
+.incorrect-answer {
+  background: $incorrect-color;
+}

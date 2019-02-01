@@ -1,0 +1,11 @@
+{
+  "name": "Quizcards",
+  "short_name": "Quizcards",
+  "theme_color": "#1976d2",
+  "background_color": "#d4e5ff",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+  ]
+}

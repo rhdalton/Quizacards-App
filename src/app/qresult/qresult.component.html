@@ -1,0 +1,36 @@
+<ion-content>
+  <ion-card>
+    <div class="quiz-results">
+      <ion-card-content *ngIf="quiz_type=='quiz'">
+        You got {{ totalcorrect }} out of {{ totalcards }} correct!
+        <br /><br />
+        <div *ngIf="totalcorrect == totalcards; else notperfect">
+          Great job! You got a perfect score. You can practice the Quiz Cards again to gain mastery or move on to the next Study Cards.
+        </div>
+        <ng-template #notperfect>
+          <div *ngIf="totalcorrect > totalcards/2">
+            Not bad! You can review the Study Cards to improve or try the Quiz Cards again.
+          </div>
+          <div *ngIf="totalcorrect <= totalcards/2">
+            Oh no! It looks like you should to review the Study Cards again, then come back to the Quiz Cards later.
+          </div>
+        </ng-template>
+      </ion-card-content>
+      <ion-card-content *ngIf="quiz_type=='study'">
+        Good job! You've completed these Study Cards.
+        <br /><br />
+        If you're comfortable with these cards try testing yourself on the Quiz Cards. Or review the Study Cards again.
+      </ion-card-content>
+    </div>
+    <ion-item-divider></ion-item-divider>
+    <ion-item-divider *ngIf="totalcorrect < totalcards" (click)="retakeQuiz('study')" class="study-color qresult-item">
+      <img src="assets/icon/study-svg.svg"> Review Study Cards
+    </ion-item-divider>
+    <ion-item-divider (click)="retakeQuiz('quiz')" class="quiz-color qresult-item">
+      <img src="assets/icon/quiz-svg.svg"> Try Quiz Cards
+    </ion-item-divider>
+    <ion-item-divider (click)="returnHome()" class="qresult-item">
+      <ion-icon class="back-icon" name="arrow-back"></ion-icon> Back to all Quiz Cards
+    </ion-item-divider>   
+  </ion-card>    
+</ion-content>

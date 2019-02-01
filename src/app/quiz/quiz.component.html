@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Quiz Cards
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>  
+  <div *ngIf="!quizDone && card; else quizResult">
+    <ion-card class="quizcard-header">
+      <ion-card-content class="quizcard-info">
+        <span class="quizcard-info-right">Card: {{ currentCard + 1 }} / {{ totalCards }}</span>
+        {{ quiz.quizname }}
+      </ion-card-content>
+    </ion-card>      
+    <app-qcard [card]="card" [quiz_type]="quiz_type"></app-qcard>
+  </div>
+  <ng-template #quizResult>
+    <app-qresult *ngIf="card"></app-qresult>
+  </ng-template>  
+</ion-content>

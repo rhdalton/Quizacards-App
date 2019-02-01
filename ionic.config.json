@@ -1,5 +1,7 @@
 {
   "name": "quizcardsapp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
